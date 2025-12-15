@@ -1,136 +1,84 @@
-# 📊 Loan Approval Prediction – Machine Learning Project
+# 🏠 Loan Approval Prediction Project
 
-This project demonstrates a complete **machine learning pipeline** to predict whether a loan application will be **approved or rejected** based on applicant information.
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![Scikit-Learn](https://img.shields.io/badge/Library-Scikit--Learn-orange)
+![MLflow](https://img.shields.io/badge/Tracking-MLflow-blueviolet)
+![Status](https://img.shields.io/badge/Status-Completed-success)
 
-The notebook covers data understanding, preprocessing, model training, evaluation, and performance analysis using real-world inspired loan data.
+## 📌 Project Overview
+This machine learning project aims to automate the loan eligibility process for financial institutions. By analyzing customer details provided in online application forms, the model predicts whether a loan should be **Approved (`Y`)** or **Rejected (`N`)**. 
 
----
+The solution helps streamline decision-making, reduce manual effort, and manage risk effectively by identifying eligible applicants based on their financial and demographic profiles.
 
-## 🧠 Project Objective
+## 📂 Dataset Description
+The dataset consists of **614 records** and **13 features**, covering demographic and financial information.
 
-Build and evaluate machine learning models that can accurately predict **Loan Status** (`Approved / Not Approved`) based on customer and loan-related features.
+| Feature | Description |
+| :--- | :--- |
+| **Loan_Status** | Target Variable (Y: Approved, N: Rejected) |
+| **Loan_ID** | Unique Loan ID |
+| **Gender** | Male / Female |
+| **Married** | Applicant married (Y/N) |
+| **Dependents** | Number of dependents |
+| **Education** | Graduate / Under Graduate |
+| **Self_Employed** | Self-employed (Y/N) |
+| **ApplicantIncome** | Income of the applicant |
+| **CoapplicantIncome** | Income of the co-applicant |
+| **LoanAmount** | Loan amount in thousands |
+| **Loan_Amount_Term** | Term of loan in months |
+| **Credit_History** | Credit history meets guidelines (1: Yes, 0: No) |
+| **Property_Area** | Urban / Semi Urban / Rural |
 
-This type of problem is a **binary classification task**, commonly used in banking and financial decision systems.
+## 🛠️ Workflow & Methodology
 
----
+### 1. Data Preprocessing
+* **Missing Values:** Imputed categorical variables with **Mode** and numerical variables with **Median** to ensure data completeness.
+* **Encoding:** Applied **One-Hot Encoding** for categorical features and **Label Encoding** for the target variable to make them machine-readable.
+* **Balancing:** Utilized **SMOTE** (Synthetic Minority Over-sampling Technique) to address class imbalance in the training data, ensuring the model doesn't become biased toward the majority class.
+* **Scaling:** Normalized features using `StandardScaler` to bring all variables to a similar scale.
 
-## 📁 Dataset Overview
+### 2. Feature Engineering
+* **Total Income:** Created a new feature combining `ApplicantIncome` and `CoapplicantIncome` to capture the full financial picture.
+* **Log Transformation:** Applied to `LoanAmount` and `TotalIncome` to handle skewness and normalize distributions, improving model performance.
+* **Feature Selection:** Dropped redundant columns (e.g., original Income columns, Loan ID) after engineering to reduce noise.
 
-The dataset includes information such as:
+### 3. Model Training & Tracking
+Several machine learning models were implemented and tracked using **MLflow** to monitor experiments and configuration:
+* **Logistic Regression** (Baseline, L1 Lasso, and L2 Ridge Regularization)
+* **Decision Tree Classifier** (Tested with Gini and Entropy criteria, and tuned Max Depth)
+* **AdaBoost Classifier** (Optimized via GridSearch for ensemble learning)
 
-* Applicant Income
-* Co-applicant Income
-* Loan Amount
-* Loan Amount Term
-* Credit History
-* Gender
-* Education
-* Self Employment
-* Property Area
-* Marital Status
+## 🚀 How to Run
 
-🎯 **Target Variable**:
+1.  **Clone the Repository**
+    ```bash
+    git clone [https://github.com/melyazedy22/loan-approval-prediction.git]
+    cd Loan-Approval-Prediction-Project
+    ```
 
-* `Loan_Status` (0 = Not Approved, 1 = Approved)
+2.  **Install Dependencies**
+    ```bash
+    pip install pandas numpy scikit-learn matplotlib seaborn mlflow imbalanced-learn
+    ```
 
----
+3.  **Run the Notebook**
+    ```bash
+    jupyter notebook ML_Project_Predicting-Loan-Approval.ipynb
+    ```
 
-## 🔄 Workflow & Pipeline
+4.  **View MLflow Experiments** (Optional)
+    To view the experiment logs and artifacts:
+    ```bash
+    mlflow ui
+    ```
 
-The notebook follows these key steps:
+## ⚙️ Technologies Used
+* **Python 3.x**
+* **Pandas & NumPy** (Data Manipulation)
+* **Matplotlib & Seaborn** (Visualization)
+* **Scikit-Learn** (Model Training & Evaluation)
+* **Imbalanced-Learn** (SMOTE for balancing data)
+* **MLflow** (Experiment Tracking)
 
-### 1️⃣ Data Exploration (EDA)
-
-* Inspect dataset structure
-* Check missing values
-* Analyze target class distribution
-* Understand feature types (numerical & categorical)
-
-### 2️⃣ Data Preprocessing
-
-* Handling missing values
-* Encoding categorical features
-
-  * Label Encoding
-  * One-Hot Encoding
-* Feature scaling using **StandardScaler**
-* Splitting data into training and testing sets
-
-### 3️⃣ Model Building
-
-Several classification models are trained and evaluated, such as:
-
-* Logistic Regression
-* Decision Tree Classifier
-* (Optional) Other ML models for comparison
-
-### 4️⃣ Model Evaluation
-
-Models are evaluated using:
-
-* Accuracy
-* Confusion Matrix
-* Classification Report
-* Cross-Validation Scores
-
-Threshold tuning is also applied to improve model decision quality.
-
----
-
-## 📈 Results & Insights
-
-* Model performance is compared using validation metrics
-* Overfitting and underfitting are analyzed
-* Best-performing model is identified based on evaluation scores
-
----
-
-## 🛠️ Technologies & Libraries
-
-The project is implemented using **Python** and the following libraries:
-
-* `NumPy`
-* `Pandas`
-* `Matplotlib`
-* `Seaborn`
-* `Scikit-learn`
-
----
-
-## ▶️ How to Run the Notebook
-
-1. Clone or download the repository
-2. Make sure Python (>=3.8) is installed
-3. Install required libraries:
-
-```bash
-pip install numpy pandas matplotlib seaborn scikit-learn
-```
-
-4. Open the notebook:
-
-```bash
-jupyter notebook ML_Project_Predicting-Loan-Approval.ipynb
-```
-
-5. Run cells sequentially from top to bottom
-
----
-
-## 📌 Notes
-
-* This project is intended for **educational purposes**
-* Dataset structure is similar to real-world loan approval systems
-* Feature engineering and threshold tuning can further improve results
-
----
-
-## 👤 Author
-
-**Mahmoud Elyazedy**
-Faculty of Engineering – Computer & Automatic Control
-Interested in Data Science & Machine Learning
-
----
-
-✅ *Feel free to improve the model, try new algorithms, or enhance feature engineering!*
+## 📜 Conclusion
+This project demonstrates a complete machine learning pipeline, from data cleaning and feature engineering to model training. The use of advanced techniques like SMOTE and hyperparameter tuning ensures a robust solution for the loan approval prediction problem.
