@@ -62,16 +62,23 @@ The following models were implemented and tracked using **MLflow**:
     * *Baseline:* Default boosting.
     * *GridSearch:* Tuned learning rate and number of estimators.
 
-## 📊 Model Performance
+### 📊 Model Performance Comparison
 
-| Model | Approach | Accuracy | Recall (Class 1) | MLflow Run ID |
-| :--- | :--- | :--- | :--- | :--- |
-| **Logistic Regression** | GridSearch (L1 Lasso) | **82.00%** | **87.00%** | *Recorded in MLflow* |
-| **Logistic Regression** | Baseline | 80.00% | 85.83% | *Recorded in MLflow* |
-| **Random Forest** | GridSearch Best | 76.22% | 80.31% | `c8314edf1d3b4b8c9943fc86cb4c9fd2` |
-| **Decision Tree** | GridSearch (Max Depth=5) | 74.00% | 78.00% | *Recorded in MLflow* |
-| **AdaBoost** | GridSearch Best | 71.35% | 72.44% | `765f7436ffb34c50adfb8675b2646dfe` |
-| **Decision Tree** | Baseline (Gini) | 70.27% | 70.86% | *Recorded in MLflow* |
+| Rank | Run Name | Accuracy | Precision | Recall | F1-Score |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 1 | **AdaBoost_GridSearch_Best** | 71.4% | 83.6% | 72.4% | 77.6% |
+| 2 | **Random_Forest_GridSearch_Best** | 76.2% | 84.3% | 80.3% | 82.3% |
+| 3 | **Decision_Tree_GridSearch_Best** | 68.6% | 81.1% | 70.9% | 75.6% |
+| 4 | **Logistic_Regression_L1_GridSearch** | **85.9%** | 83.9% | **98.4%** | **90.6%** |
+| 5 | **Logistic_Regression_L2_GridSearch** | 80.0% | 85.2% | 85.8% | 85.5% |
+| 6 | **AdaBoost_Tuned** | 84.9% | 82.8% | **98.4%** | 89.9% |
+| 7 | **Random_Forest_tuned** | 77.3% | 82.9% | 84.3% | 83.6% |
+| 8 | **Decision_Tree_Tuned** | 80.5% | 83.7% | 89.0% | 86.3% |
+| 9 | **Logistic_Regression_L1_Tuned** | 81.6% | **86.0%** | 87.4% | 86.7% |
+| 10 | **Logistic_Regression_L2_Tuned** | 81.6% | **86.0%** | 87.4% | 86.7% |
+| 11 | **Logistic_Regression (Baseline)** | 80.0% | 85.2% | 85.8% | 85.5% |
+
+
 
 > **Key Insight:** While **Random Forest** provided strong results (~76%), the simpler **Logistic Regression (L1 Lasso)** achieved the highest accuracy (~82%) and generalization, likely due to the linear separability of the processed features.
 ## 🚀 How to Run
