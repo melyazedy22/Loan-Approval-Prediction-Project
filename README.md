@@ -61,7 +61,10 @@ The following models were implemented and tracked using **MLflow**:
 * **AdaBoost Classifier**
     * *Baseline:* Default boosting.
     * *GridSearch:* Tuned learning rate and number of estimators.
-
+* **Support Vector Machine Classifier**
+    * *Baseline:* Default SVC.
+    * *GridSearch:* Tuned Parameters.
+      
 # 📊 Model Performance Comparison 
 
 | Rank | Run Name                          | Run Type    | Accuracy | Precision | Recall | F1-Score | Duration (s) |
