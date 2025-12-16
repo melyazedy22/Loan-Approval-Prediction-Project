@@ -62,22 +62,28 @@ The following models were implemented and tracked using **MLflow**:
     * *Baseline:* Default boosting.
     * *GridSearch:* Tuned learning rate and number of estimators.
 
-### 📊 Model Performance Comparison
+# 📊 Model Performance Comparison 
 
-| Rank | Run Name | Accuracy | Precision | Recall | F1-Score |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | **AdaBoost_GridSearch_Best** | 71.4% | 83.6% | 72.4% | 77.6% |
-| 2 | **Random_Forest_GridSearch_Best** | 76.2% | 84.3% | 80.3% | 82.3% |
-| 3 | **Decision_Tree_GridSearch_Best** | 68.6% | 81.1% | 70.9% | 75.6% |
-| 4 | **Logistic_Regression_L1_GridSearch** | **85.9%** | 83.9% | **98.4%** | **90.6%** |
-| 5 | **Logistic_Regression_L2_GridSearch** | 80.0% | 85.2% | 85.8% | 85.5% |
-| 6 | **AdaBoost_Tuned** | 84.9% | 82.8% | **98.4%** | 89.9% |
-| 7 | **Random_Forest_tuned** | 77.3% | 82.9% | 84.3% | 83.6% |
-| 8 | **Decision_Tree_Tuned** | 80.5% | 83.7% | 89.0% | 86.3% |
-| 9 | **Logistic_Regression_L1_Tuned** | 81.6% | **86.0%** | 87.4% | 86.7% |
-| 10 | **Logistic_Regression_L2_Tuned** | 81.6% | **86.0%** | 87.4% | 86.7% |
-| 11 | **Logistic_Regression (Baseline)** | 80.0% | 85.2% | 85.8% | 85.5% |
+| Rank | Run Name                          | Run Type    | Accuracy | Precision | Recall | F1-Score | Duration (s) |
+| :--- | :-------------------------------- | :---------- | -------: | --------: | -----: | -------: | -----------: |
+| 1    | Logistic_Regression_L1_GridSearch | GridSearch  | **84.9%** |   82.8%   | **98.4%** | **89.9%** |      4.7     |
+| 2    | SVM                               | Base        | **84.9%** |   82.8%   | **98.4%** | **89.9%** |      4.7     |
+| 3    | AdaBoost                          | Base        | **84.9%** |   82.8%   | **98.4%** | **89.9%** |      4.6     |
+| 4    | Decision_Tree                     | Base        | **84.9%** |   82.8%   | **98.4%** | **89.9%** |      4.8     |
+| 5    | Random_Forest                     | Base        |   82.7%   |   83.2%   |  93.7% |   88.1%   |      5.0     |
+| 6    | Logistic_Regression_L2_GridSearch | GridSearch  |   81.6%   |   86.0%   |  87.4% |   86.7%   |      4.6     |
+| 7    | Logistic_Regression_L1_Tuned      | Tuned       |   80.5%   |   85.8%   |  85.8% |   85.8%   |      4.6     |
+| 8    | Logistic_Regression_L2_Tuned      | Tuned       |   80.5%   |   85.8%   |  85.8% |   85.8%   |      4.7     |
+| 9    | Logistic_Regression               | Base        |   80.5%   |   85.8%   |  85.8% |   85.8%   |      7.8     |
+| 10   | Random_Forest_GridSearch          | GridSearch  |   76.2%   |   84.3%   |  80.3% |   82.3%   |      5.2     |
+| 11   | Decision_Tree_GridSearch          | GridSearch  |   74.1%   |   83.2%   |  78.0% |   80.5%   |     11.4     |
+| 12   | SVM_GridSearch                    | GridSearch  |   73.5%   |   79.1%   |  83.5% |   81.2%   |      4.4     |
+| 13   | AdaBoost_GridSearch               | GridSearch  |   68.1%   |   82.1%   |  68.5% |   74.7%   |      5.2     |
 
+**Notes:**
+- Ranked by **Accuracy** descending (ties broken by F1-Score, then Recall).
+- Top 4 models achieved identical best performance: **84.9% Accuracy** and **89.9% F1-Score**.
+- Duration values taken directly from the latest run logs.
 
 
 > **Key Insight:** While **Random Forest** provided strong results (~76%), the simpler **Logistic Regression (L1 Lasso)** achieved the highest accuracy (~82%) and generalization, likely due to the linear separability of the processed features.
